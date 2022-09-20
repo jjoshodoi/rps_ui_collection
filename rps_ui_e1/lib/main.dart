@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rps_ui_e1/screens/DetailPageJosh.dart';
 import 'package:rps_ui_e1/screens/LandingPage.dart';
 import 'package:rps_ui_e1/utils/constants.dart';
 import 'dart:ui';
@@ -14,8 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Design 1',
-      theme: ThemeData(primaryColor: COLOR_WHITE, accentColor: COLOR_DARK_BLUE, textTheme: screenWidth < 500 ? TEXT_THEME_SMALL : TEXT_THEME_DEFAULT, fontFamily: "Montserrat"),
-      home: LandingPage(),
+      theme: ThemeData(
+          primaryColor: COLOR_WHITE,
+          accentColor: COLOR_DARK_BLUE,
+          textTheme: screenWidth < 500 ? TEXT_THEME_SMALL : TEXT_THEME_DEFAULT,
+          fontFamily: "Montserrat"),
+      home: DetailPageJosh(),
     );
   }
 }
