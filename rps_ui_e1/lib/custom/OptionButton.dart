@@ -7,18 +7,35 @@ class OptionButton extends StatelessWidget {
   final IconData icon;
   final double width;
 
-  const OptionButton({Key key, @required this.text, @required this.icon, @required this.width}) : super(key: key);
+  const OptionButton({Key key, this.text, this.icon, this.width})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      child: FlatButton(
-          color: COLOR_DARK_BLUE,
-          splashColor: Colors.white.withAlpha(55),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          onPressed: () {},
+      child: TextButton(
+          onPressed: () => {},
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    side: BorderSide(color: COLOR_DARK_BLUE))),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            ),
+            foregroundColor: MaterialStateProperty.all<Color>(COLOR_DARK_BLUE),
+            overlayColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+                if (states.contains(MaterialState.hovered))
+                  return Colors.white.withOpacity(0.04);
+                if (states.contains(MaterialState.focused) ||
+                    states.contains(MaterialState.pressed))
+                  return Colors.white.withOpacity(0.12);
+                return null; // Defer to the widget's default.
+              },
+            ),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

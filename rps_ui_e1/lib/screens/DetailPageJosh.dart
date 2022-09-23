@@ -18,9 +18,6 @@ class DetailPageJosh extends StatelessWidget {
     final EdgeInsets sidePadding = EdgeInsets.symmetric(horizontal: padding);
     final houseData = RE_DATA[0];
 
-    DateTime tsdate =
-        DateTime.fromMillisecondsSinceEpoch(houseData["time_posted"]);
-
     return SafeArea(
       child: Scaffold(
           backgroundColor: COLOR_WHITE,
@@ -66,17 +63,19 @@ class DetailPageJosh extends StatelessWidget {
                                   children: [
                                     Text(
                                         "${formatCurrency(houseData["amount"])}",
-                                        style: themeData.textTheme.headline1),
+                                        style:
+                                            themeData.textTheme.displayLarge),
                                     addVerticalSpace(4),
                                     Text("${houseData["address"]}",
-                                        style: themeData.textTheme.subtitle1)
+                                        style: themeData.textTheme.bodySmall)
                                   ],
                                 ),
                                 BorderIcon(
                                     padding: EdgeInsets.all(12),
                                     child: Text(
                                         "${formatPostedDate(houseData["time_posted"])}",
-                                        style: themeData.textTheme.headline4))
+                                        style:
+                                            themeData.textTheme.headlineLarge))
                               ],
                             ),
                           ),
@@ -84,7 +83,7 @@ class DetailPageJosh extends StatelessWidget {
                           Padding(
                             padding: sidePadding,
                             child: Text("House Information",
-                                style: themeData.textTheme.headline3),
+                                style: themeData.textTheme.displaySmall),
                           ),
                           addVerticalSpace(padding),
                           SingleChildScrollView(
@@ -111,7 +110,7 @@ class DetailPageJosh extends StatelessWidget {
                             padding: sidePadding,
                             child: Text(houseData["description"],
                                 textAlign: TextAlign.justify,
-                                style: themeData.textTheme.bodyText2),
+                                style: themeData.textTheme.bodyMedium),
                           ),
                           addVerticalSpace(size.width * 0.30)
                         ]),
@@ -160,9 +159,9 @@ class InformationTile extends StatelessWidget {
         BorderIcon(
             height: tileSize,
             width: tileSize,
-            child: Text(info, style: themeData.textTheme.headline3)),
+            child: Text(info, style: themeData.textTheme.displaySmall)),
         addVerticalSpace(padding),
-        Text(name, style: themeData.textTheme.headline5)
+        Text(name, style: themeData.textTheme.headlineMedium)
       ]),
     );
   }

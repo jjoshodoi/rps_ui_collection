@@ -6,48 +6,44 @@ String formatCurrency(num amount, {int decimalCount = 0}) {
   return formatCurrency.format(amount);
 }
 
-String formatPostedDate(num ts_milli_epoch) {
-  num time_posted_relative_to_now =
-      DateTime.now().millisecondsSinceEpoch - ts_milli_epoch;
+String formatPostedDate(num tsMillisecondsEpoch) {
+  num timePostedRelativeToNow =
+      DateTime.now().millisecondsSinceEpoch - tsMillisecondsEpoch;
 
   // less than a hour
-  if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["hour"]) {
-    int mins_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).minute;
-    return "${mins_since_post} minute${addPlural(mins_since_post)} ago";
+  if (timePostedRelativeToNow < MILLISECONDS_TO_TIME_UNIT["hour"]) {
+    int minsSincePost =
+        DateTime.fromMillisecondsSinceEpoch(timePostedRelativeToNow).minute;
+    return "$minsSincePost minute${addPlural(minsSincePost)} ago";
   }
   // less than a day
-  if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["day"]) {
-    int hrs_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).hour -
-            1;
-    return "${hrs_since_post} hour${addPlural(hrs_since_post)} ago";
+  if (timePostedRelativeToNow < MILLISECONDS_TO_TIME_UNIT["day"]) {
+    int hrsSincePost =
+        DateTime.fromMillisecondsSinceEpoch(timePostedRelativeToNow).hour - 1;
+    return "$hrsSincePost hour${addPlural(hrsSincePost)} ago";
   }
   // less than a week
-  if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["week"]) {
-    int days_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day -
-            1;
-    return "${days_since_post} day${addPlural(days_since_post)} ago";
+  if (timePostedRelativeToNow < MILLISECONDS_TO_TIME_UNIT["week"]) {
+    int daysSincePost =
+        DateTime.fromMillisecondsSinceEpoch(timePostedRelativeToNow).day - 1;
+    return "$daysSincePost day${addPlural(daysSincePost)} ago";
   }
   // less than a month
-  if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["month"]) {
-    int days_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day -
-            1;
-    int weeks_since_post = (days_since_post / 7).floor();
-    return "${weeks_since_post} week${addPlural(weeks_since_post)} ago";
+  if (timePostedRelativeToNow < MILLISECONDS_TO_TIME_UNIT["month"]) {
+    int daysSincePost =
+        DateTime.fromMillisecondsSinceEpoch(timePostedRelativeToNow).day - 1;
+    int weeksSincePost = (daysSincePost / 7).floor();
+    return "$weeksSincePost week${addPlural(weeksSincePost)} ago";
   }
   // less than a year
-  if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["year"]) {
-    int months_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).month -
-            1;
-    return "${months_since_post} month${addPlural(months_since_post)} ago";
+  if (timePostedRelativeToNow < MILLISECONDS_TO_TIME_UNIT["year"]) {
+    int monthsSincePost =
+        DateTime.fromMillisecondsSinceEpoch(timePostedRelativeToNow).month - 1;
+    return "$monthsSincePost month${addPlural(monthsSincePost)} ago";
   }
-  num years_since_post =
-      time_posted_relative_to_now / MILLISECONDS_TO_TIME_UNIT["year"].floor();
-  return "${years_since_post} minute${addPlural(years_since_post)} ago";
+  num yearsSincePost =
+      timePostedRelativeToNow / MILLISECONDS_TO_TIME_UNIT["year"].floor();
+  return "$yearsSincePost minute${addPlural(yearsSincePost)} ago";
 }
 
 String addPlural(num n) {

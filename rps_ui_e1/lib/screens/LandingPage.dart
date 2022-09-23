@@ -54,7 +54,7 @@ class LandingPage extends StatelessWidget {
                   padding: sidePadding,
                   child: Text(
                     "City",
-                    style: themeData.textTheme.bodyText2,
+                    style: themeData.textTheme.bodyMedium,
                   ),
                 ),
                 addVerticalSpace(10),
@@ -62,7 +62,7 @@ class LandingPage extends StatelessWidget {
                   padding: sidePadding,
                   child: Text(
                     "San Francisco",
-                    style: themeData.textTheme.headline1,
+                    style: themeData.textTheme.displayLarge,
                   ),
                 ),
                 Padding(
@@ -76,8 +76,12 @@ class LandingPage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   physics: BouncingScrollPhysics(),
                   child: Row(
-                    children: ["<\$220,000","For Sale","3-4 Beds",">1000 sqft"]
-                        .map((filter) => ChoiceOption(text: filter)).toList(),
+                    children: [
+                      "<\$220,000",
+                      "For Sale",
+                      "3-4 Beds",
+                      ">1000 sqft"
+                    ].map((filter) => ChoiceOption(text: filter)).toList(),
                   ),
                 ),
                 addVerticalSpace(10),
@@ -131,7 +135,7 @@ class ChoiceOption extends StatelessWidget {
       margin: const EdgeInsets.only(left: 20),
       child: Text(
         text,
-        style: themeData.textTheme.headline5,
+        style: themeData.textTheme.headlineMedium,
       ),
     );
   }
@@ -159,7 +163,9 @@ class RealEstateItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                ClipRRect(borderRadius: BorderRadius.circular(25.0), child: Image.asset(itemData["image"])),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(25.0),
+                    child: Image.asset(itemData["image"])),
                 Positioned(
                     top: 15,
                     right: 15,
@@ -175,19 +181,19 @@ class RealEstateItem extends StatelessWidget {
               children: [
                 Text(
                   "${formatCurrency(itemData["amount"])}",
-                  style: themeData.textTheme.headline1,
+                  style: themeData.textTheme.displayLarge,
                 ),
                 addHorizontalSpace(10),
                 Text(
                   "${itemData["address"]}",
-                  style: themeData.textTheme.bodyText2,
+                  style: themeData.textTheme.bodyMedium,
                 )
               ],
             ),
             addVerticalSpace(10),
             Text(
               "${itemData["bedrooms"]} bedrooms / ${itemData["bathrooms"]} bathrooms / ${itemData["area"]} sqft",
-              style: themeData.textTheme.headline5,
+              style: themeData.textTheme.headlineMedium,
             )
           ],
         ),

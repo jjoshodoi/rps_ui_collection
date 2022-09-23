@@ -64,7 +64,7 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Joshua Odoi", style: themeData.textTheme.body2),
+                  Text("Joshua Odoi", style: themeData.textTheme.bodyText2),
                   addVerticalSpace(5),
                   InkWell(
                     child: new Text('www.url.com',
@@ -75,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       text: "Followed by ",
-                      style: themeData.textTheme.body2,
+                      style: themeData.textTheme.bodyText2,
                       children: const <TextSpan>[
                         TextSpan(
                             text: 'account1, account2',

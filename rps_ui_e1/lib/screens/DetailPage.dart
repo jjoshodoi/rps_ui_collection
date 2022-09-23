@@ -8,7 +8,7 @@ import 'package:rps_ui_e1/utils/widget_functions.dart';
 class DetailPage extends StatelessWidget {
   final dynamic itemData;
 
-  const DetailPage({Key key,@required this.itemData}) : super(key: key);
+  const DetailPage({Key key, this.itemData}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -40,19 +40,25 @@ class DetailPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 InkWell(
-                                  onTap: (){
+                                  onTap: () {
                                     Navigator.pop(context);
                                   },
                                   child: BorderIcon(
                                     height: 50,
                                     width: 50,
-                                    child: Icon(Icons.keyboard_backspace,color: COLOR_BLACK,),
+                                    child: Icon(
+                                      Icons.keyboard_backspace,
+                                      color: COLOR_BLACK,
+                                    ),
                                   ),
                                 ),
                                 BorderIcon(
                                   height: 50,
                                   width: 50,
-                                  child: Icon(Icons.favorite_border,color: COLOR_BLACK,),
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    color: COLOR_BLACK,
+                                  ),
                                 ),
                               ],
                             ),
@@ -69,19 +75,35 @@ class DetailPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("${formatCurrency(itemData["amount"])}",style: themeData.textTheme.headline1,),
+                              Text(
+                                "${formatCurrency(itemData["amount"])}",
+                                style: themeData.textTheme.displayLarge,
+                              ),
                               addVerticalSpace(5),
-                              Text("\$${itemData["address"]}",style: themeData.textTheme.subtitle2,),
+                              Text(
+                                "\$${itemData["address"]}",
+                                style: themeData.textTheme.bodySmall,
+                              ),
                             ],
                           ),
-                          BorderIcon(child: Text("20 Hours ago",style: themeData.textTheme.headline5,),padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 15),)
+                          BorderIcon(
+                            child: Text(
+                              "20 Hours ago",
+                              style: themeData.textTheme.headlineMedium,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 15),
+                          )
                         ],
                       ),
                     ),
                     addVerticalSpace(padding),
                     Padding(
                       padding: sidePadding,
-                      child: Text("House Information",style: themeData.textTheme.headline4,),
+                      child: Text(
+                        "House Information",
+                        style: themeData.textTheme.headlineLarge,
+                      ),
                     ),
                     addVerticalSpace(padding),
                     SingleChildScrollView(
@@ -89,18 +111,33 @@ class DetailPage extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       child: Row(
                         children: [
-                          InformationTile(content: "${itemData["area"]}",name: "Square Foot",),
-                          InformationTile(content: "${itemData["bedrooms"]}",name: "Bedrooms",),
-                          InformationTile(content: "${itemData["bathrooms"]}",name: "Bathrooms",),
-                          InformationTile(content: "${itemData["garage"]}",name: "Garage",)
+                          InformationTile(
+                            content: "${itemData["area"]}",
+                            name: "Square Foot",
+                          ),
+                          InformationTile(
+                            content: "${itemData["bedrooms"]}",
+                            name: "Bedrooms",
+                          ),
+                          InformationTile(
+                            content: "${itemData["bathrooms"]}",
+                            name: "Bathrooms",
+                          ),
+                          InformationTile(
+                            content: "${itemData["garage"]}",
+                            name: "Garage",
+                          )
                         ],
                       ),
                     ),
                     addVerticalSpace(padding),
                     Padding(
                       padding: sidePadding,
-                      child: Text(itemData["description"]
-                        ,textAlign: TextAlign.justify,style: themeData.textTheme.bodyText2,),
+                      child: Text(
+                        itemData["description"],
+                        textAlign: TextAlign.justify,
+                        style: themeData.textTheme.bodyMedium,
+                      ),
                     ),
                     addVerticalSpace(100),
                   ],
@@ -112,9 +149,17 @@ class DetailPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    OptionButton(text: "Message",icon: Icons.message,width: size.width*0.35,),
+                    OptionButton(
+                      text: "Message",
+                      icon: Icons.message,
+                      width: size.width * 0.35,
+                    ),
                     addHorizontalSpace(10),
-                    OptionButton(text: "Call",icon: Icons.call,width: size.width*0.35,),
+                    OptionButton(
+                      text: "Call",
+                      icon: Icons.call,
+                      width: size.width * 0.35,
+                    ),
                   ],
                 ),
               )
@@ -126,18 +171,17 @@ class DetailPage extends StatelessWidget {
   }
 }
 
-class InformationTile extends StatelessWidget{
-
+class InformationTile extends StatelessWidget {
   final String content;
   final String name;
 
-  const InformationTile({Key key,@required this.content,@required this.name}) : super(key: key);
+  const InformationTile({Key key, this.content, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     final Size size = MediaQuery.of(context).size;
-    final double tileSize = size.width*0.20;
+    final double tileSize = size.width * 0.20;
     return Container(
       margin: const EdgeInsets.only(left: 25),
       child: Column(
@@ -146,13 +190,17 @@ class InformationTile extends StatelessWidget{
           BorderIcon(
               width: tileSize,
               height: tileSize,
-              child: Text(content,style: themeData.textTheme.headline3,)),
+              child: Text(
+                content,
+                style: themeData.textTheme.displaySmall,
+              )),
           addVerticalSpace(15),
-          Text(name,style: themeData.textTheme.headline6,)
+          Text(
+            name,
+            style: themeData.textTheme.headlineSmall,
+          )
         ],
       ),
     );
-
   }
-
 }
