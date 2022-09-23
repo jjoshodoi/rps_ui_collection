@@ -26,20 +26,23 @@ String formatPostedDate(num ts_milli_epoch) {
   // less than a week
   if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["week"]) {
     int days_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day;
+        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day -
+            1;
     return "${days_since_post} day${addPlural(days_since_post)} ago";
   }
   // less than a month
   if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["month"]) {
     int days_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day;
+        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).day -
+            1;
     int weeks_since_post = (days_since_post / 7).floor();
     return "${weeks_since_post} week${addPlural(weeks_since_post)} ago";
   }
   // less than a year
   if (time_posted_relative_to_now < MILLISECONDS_TO_TIME_UNIT["year"]) {
     int months_since_post =
-        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).month;
+        DateTime.fromMillisecondsSinceEpoch(time_posted_relative_to_now).month -
+            1;
     return "${months_since_post} month${addPlural(months_since_post)} ago";
   }
   num years_since_post =
