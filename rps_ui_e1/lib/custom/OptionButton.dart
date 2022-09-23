@@ -24,7 +24,7 @@ class OptionButton extends StatelessWidget {
             padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
               const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             ),
-            foregroundColor: MaterialStateProperty.all<Color>(COLOR_DARK_BLUE),
+            backgroundColor: MaterialStateProperty.all<Color>(COLOR_DARK_BLUE),
             overlayColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
                 if (states.contains(MaterialState.hovered))
@@ -32,7 +32,7 @@ class OptionButton extends StatelessWidget {
                 if (states.contains(MaterialState.focused) ||
                     states.contains(MaterialState.pressed))
                   return Colors.white.withOpacity(0.12);
-                return null; // Defer to the widget's default.
+                return COLOR_DARK_BLUE; // Defer to the widget's default.
               },
             ),
           ),
