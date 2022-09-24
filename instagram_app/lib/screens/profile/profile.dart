@@ -34,7 +34,11 @@ class ProfilePage extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
-          title: Text(username),
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
+          // elevation: ,
+          foregroundColor: COLOR_DARK_GRAY,
+          title: Text(username, style: themeData.textTheme.displaySmall),
           leading: Icon(Icons.arrow_back_ios_rounded, color: COLOR_GRAY),
           actions: [
             Padding(
@@ -64,23 +68,28 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Joshua Odoi", style: themeData.textTheme.bodyText2),
+                  Text("Joshua Odoi",
+                      style: themeData.textTheme.headlineMedium),
                   addVerticalSpace(5),
                   InkWell(
                     child: new Text('www.url.com',
-                        style: TextStyle(color: COLOR_BLUE)),
+                        style: themeData.textTheme.bodyMedium!
+                            .copyWith(color: COLOR_BLUE)),
                     onTap: () => launch('https://google.com'),
                   ),
                   addVerticalSpace(5),
                   RichText(
                     text: TextSpan(
                       text: "Followed by ",
-                      style: themeData.textTheme.bodyText2,
+                      style: themeData.textTheme.headlineSmall!
+                          .copyWith(fontWeight: FontWeight.normal),
                       children: const <TextSpan>[
                         TextSpan(
                             text: 'account1, account2',
                             style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: ' and 92 others'),
+                        TextSpan(
+                          text: ' and 92 others',
+                        ),
                       ],
                     ),
                   )
